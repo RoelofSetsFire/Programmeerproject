@@ -11,11 +11,11 @@ To enhance the participation of the users a quiz will also be added, possibly ma
 real and pseudo-science? Finishing the quiz should report interesting stats on the person taking the quiz
 as well as the person before them. The quiz will touch upon the same science as the rest of the page.
 
-*Chart on spending on pseudo-science (MVP)
-*Background info and related charts (MVP)
-*Reference to articles (Optional)
-*Quiz (MVP)
-*Stats related to quiz (Optional)
+* Chart on spending on pseudo-science (MVP)
+* Background info and related charts (MVP)
+* Reference to articles (Optional)
+* Quiz (MVP)
+* Stats related to quiz (Optional)
 
 
 ##Possible limitations that could arise
