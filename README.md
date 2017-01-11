@@ -11,7 +11,7 @@ To enhance the participation of the users a quiz will also be added, possibly ma
 * Stats related to quiz (Optional)
 
 
-##Possible limitations that could arise
+## Possible limitations that could arise
 
 The main limitation that I can see arising is a lack of hard data; if this happens however the choice for less clear data could be made in order to still make a visualization.
 
@@ -20,5 +20,5 @@ Ways to make the subject matter interesting and visually appealing will also hav
 Technically the biggest difficulty is going to be implementing the quiz, as this would require a database/sql if it is to be implemented in it's most interesting form. With the help at hand this should not be a problem that cannot be overcome though.
 
 
-### review of similar visualization
+### Review of similar visualization
 None found so far. First thing tomorrow should be to keep looking.

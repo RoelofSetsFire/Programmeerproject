@@ -17,3 +17,16 @@
 * Maybe add comparison with actual science/medicine?
 
 * As a chart [this one](http://1.bp.blogspot.com/-iTuAtoblCNE/UIqi0jGud9I/AAAAAAAAAYk/987EjabXKjU/s640/graph%25284%2529.jpg), while basic, works. Boxes clearer maybe? Different font/numbers?
+
+# Day 3
+
+* Question raised during stand-up on whether linking to other visualization actually qualifies as linked views. Find out if this is the case and if not find ways to add linked interactivity.
+
+* Add number of practitioners as little figures!
+  * http://stackoverflow.com/questions/18092976/is-it-possible-to-import-svg-shapes-in-d3-js
+  * http://stackoverflow.com/questions/39758668/adding-image-icon-instead-of-svg-shape-in-d3
+  * https://commons.wikimedia.org/wiki/File:Person_icon_BLACK-01.svg
+
+* xkcd style graphs; might not be useful now but keeping a link; http://engineering.ooyala.com/blog/how-create-xkcd-style-charts-using-javascript-and-d3
+
+* Possibly use Angular? https://angularjs.org/

@@ -2,12 +2,13 @@
 
 ## Main page
 
-Title (TBD) on the centre of the page, with a paragraph outline the goal of the site as well as explain its functionality. Aim is a clean and professional look without being boring. Following the introduction will be a D3 generated graph of the main data (amount of money spent on bogus/unproven science/medicine) as a chart (probably bar). This chart should be fairly basic; just representing the different amounts for the different keys. When clicked an outline describing the subject as well as links to scientific articles on their effectivity should appear to the right. A number of charts (also D3) related to the subject (number can vary from one to the others) should also appear. The main chart should be replaced by all this information, with a button allowing the user to return. (See sketch 1).
+Title (TBD) on the centre of the page, with a paragraph outline the goal of the site as well as explain its functionality. Aim is a clean and professional look without being boring. Following the introduction will be two D3 generated graphs: one on amount of money spent on bogus/unproven science/medicine (bar or pie chart) and one of practitioners of said field using humanoid icons, color coded. When clicked just the practitioners of that field will remain while the money chart should either reduce in size or collapse entirely. Following this an outline describing the subject as well as links to scientific articles on their effectivity should appear to the right. A number of charts (also D3) related to the subject (number can vary from one to the others) should also appear. An x-button should collapse the additional information and resize/return the money chart and repopulate the practitioners chart. See sketch01.jpg.
 
 Due to varying amounts of data the easiest way to store and retrieve it will be one or multiple JSON objects.
 
 ## Quiz
 
+The quiz will consist of ten to twenty questions of a true/false nature, coded in JavaScript/jQuery. Optionally the answers will be stored in a SQL database so they can be used in D3 graphs showing the takers accuracy compared to others taking the test, which question is most often answered wrong, etc. The point here is to engage the reader as well as further the idea of these industries as wasteful and dangerous. See sketch02.jpg.
 
 
 # Data Sources
@@ -57,6 +58,7 @@ Due to varying amounts of data the easiest way to store and retrieve it will be 
 
 ## Faith healing / Reiki
 * https://www.ncbi.nlm.nih.gov/pubmed/23210468
+* http://www.reikitablereviews.com/wp-content/uploads/2015/01/infographic_massage_therapy_industry.jpg
 
 ## Aromatherapy
 * http://www.grandviewresearch.com/industry-analysis/essential-oils-market
