@@ -30,3 +30,11 @@
 * xkcd style graphs; might not be useful now but keeping a link; http://engineering.ooyala.com/blog/how-create-xkcd-style-charts-using-javascript-and-d3
 
 * Possibly use Angular? https://angularjs.org/
+
+# Day 4
+
+* Learned about version checking in html; neat-o!
+
+* Resizing/moving stuff around is going to require good grasp of selection: https://bost.ocks.org/mike/selection/
+
+* Resizing with function guide; http://eyeseast.github.io/visible-data/2013/08/28/responsive-charts-with-d3/
