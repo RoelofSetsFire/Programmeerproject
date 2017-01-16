@@ -12,6 +12,20 @@
   fill:white;
   stroke:black;}
 
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, code, small, strike, strong, sub, sup, b, u, i {
     border:0;
     font-size:100%;

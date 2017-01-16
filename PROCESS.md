@@ -38,3 +38,11 @@
 * Resizing/moving stuff around is going to require good grasp of selection: https://bost.ocks.org/mike/selection/
 
 * Resizing with function guide; http://eyeseast.github.io/visible-data/2013/08/28/responsive-charts-with-d3/
+
+
+# Week 2
+# Day 1
+
+* Working on a function to dynamically create graphs for each category (necessary because different kind of graphs): little documentation online but a foreach with clear tagging should works
+
+* Decided on a button for choosing different lines within a new graph; easier to code with the added bonus of interactivity!

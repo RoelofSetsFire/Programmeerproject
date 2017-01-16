@@ -42,6 +42,7 @@ The quiz will consist of ten to twenty questions of a true/false nature, coded i
 * https://www.theguardian.com/science/blog/2012/apr/03/homeopathy-why-i-changed-my-mind
 * https://www.ncbi.nlm.nih.gov/pubmed/12492603 (systemetic review of systemetic reviews)
 * https://www.ncbi.nlm.nih.gov/pubmed/16296912 (observational study (positive effect))
+* http://online.liebertpub.com.proxy.uba.uva.nl:2048/doi/pdf/10.1089/acm.2005.11.793
 * http://www.nutraceuticalsworld.com/issues/2013-07/view_industry-news/us-sales-of-homeopathic-herbal-remedies-reach-64-billion (dataset)
 * http://www.transparencymarketresearch.com/pressrelease/homeopathy-product-market.htm (dataset)
 
