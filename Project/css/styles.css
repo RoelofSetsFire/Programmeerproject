@@ -12,12 +12,20 @@
   fill:white;
   stroke:black;}
 
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
 path {
     stroke: steelblue;
     stroke-width: 2;
     fill: none;
 }
-
+.axis--x path {
+  display: none;
+}
 .axis path,
 .axis line {
     fill: none;

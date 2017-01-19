@@ -6,18 +6,18 @@ var width = 600,
     height = 400,
     radius = Math.min(width, height) / 2;
 
-var color = d3.scale.ordinal()
+var color = d3.scaleOrdinal()
     .range(["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"]);
 
-var arc = d3.svg.arc()
+var arc = d3.arc()
     .outerRadius(radius - 10)
     .innerRadius(0);
 
-var labelArc = d3.svg.arc()
+var labelArc = d3.arc()
     .outerRadius(radius - 40)
     .innerRadius(radius - 40);
 
-var pie = d3.layout.pie()
+var pie = d3.pie()
     //.sort(null)
     .value(function(d) { return d.spending; });
 
@@ -32,19 +32,15 @@ var svg = d3.select("body").append("svg")
 d3.json("data/test2.json", function(error, data) {
   if (error) throw error;
 
-
-
   var g = svg.selectAll(".arc")
       .data(pie(data))
     .enter().append("g")
       .attr("class", "arc")
       .on("click", function(d,i){
-        selection = d3.select(this);
-        //.attr
         resize();
         svg.selectAll(".arc").remove();
         //data.sector.forEach(addButton);
-        makeGraphs(data[0].graphs);
+        makeGraphs("Homeo");
         })
       ;
 
@@ -63,13 +59,13 @@ d3.json("data/test2.json", function(error, data) {
       .attr("dy", ".35em")
       .text(function(d) { return d.data.spending; });
 
-  var padding = 20,
-    legx = radius + padding,
-    legend = svg.append("g")
-    .attr("class", "legend")
-    .attr("transform", "translate(" + legx + ", 0)")
-    .style("font-size", "12px")
-    .call(d3.legend);
+  // var padding = 20,
+  //   legx = radius + padding,
+  //   legend = svg.append("g")
+  //   .attr("class", "legend")
+  //   .attr("transform", "translate(" + legx + ", 0)")
+  //   .style("font-size", "12px")
+  //   .call(d3.legend);
 });
 
 function type(d) {
@@ -85,68 +81,78 @@ function resize() {
   .attr("height", height / 2);
 }
 
-function makeGraphs(data){
-  var rightMargin = {left: 20, right: 20, bottom: 20, top:20},
-      rightWidth = 460 - rightMargin.left - rightMargin.right,
-      rightHeight = 460 - rightMargin.bottom - rightMargin.top;
+function makeGraphs(sector){
+
+  var rightSVG = d3.select("#rightGraphs"),
+      margin = {top: 20, right: 80, bottom: 30, left: 50},
+      rightWidth = rightSVG.attr("width") - margin.left - margin.right,
+      rightHeight = rightSVG.attr("height") - margin.top - margin.bottom,
+      rightG = rightSVG.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-  // Set the ranges
-  var	x = d3.scale.ordinal()
-  .domain(data.Likert)
-  .rangeRoundPoints([0, rightWidth]);
+  var x = d3.scaleBand().rangeRound([0, rightWidth]),
+      y = d3.scaleLinear().range([rightHeight, 0]),
+      z = d3.scaleOrdinal(d3.schemeCategory10);
 
-  var	y = d3.scale.linear().range([rightHeight, 0]);
+  var line = d3.line()
+      .curve(d3.curveBasis)
+      .x(function(d) { return x(d.xLine); })
+      .y(function(d) { return y(d.value); });
 
-  // Define the axes
-  var	xAxis = d3.svg.axis().scale(x)
-  	.orient("bottom");
+  d3.csv("data/"+sector+".csv", type, function(error, csv) {
+    if (error) throw error;
 
-  var	yAxis = d3.svg.axis().scale(y)
-  	.orient("left");
+    var conditions = csv.columns.slice(1).map(function(id) {
+      return {
+        id: id,
+        values: csv.map(function(d) {
+          return {Likert: d.Likert, percentage: +d[id]};
+        })
+      };
+    });
 
-  // Define the line
-  // var	valueline = d3.svg.line()
-  // 	.x(d.Likert)
-  // 	.y(d.Eczema);
+    x.domain(csv.map(function(d) { return d.Likert; }));
 
-  // Adds the svg canvas
-  var	rightChart = d3.select("#rightGraphs")
-  	.append("svg")
-      .attr("id", "proof")
-  		.attr("width", rightWidth + rightMargin.left + rightMargin.right)
-  		.attr("height", rightHeight + rightMargin.top + rightMargin.bottom)
-  	.append("g")
-  		.attr("transform", "translate(" + rightMargin.left + "," + rightMargin.top + ")");
+    y.domain([
+      d3.min(conditions, function(c) { return d3.min(c.values, function(d) { return d.percentage; }); }),
+      d3.max(conditions, function(c) { return d3.max(c.values, function(d) { return d.percentage; }); })
+    ]);
 
-  /* Get the data
-  d3.csv("data1.csv", function(error, data) {
-  	data.forEach(function(d) {
-  		d.date = parseDate(d.date);
-  		d.close = +d.close;
-  	});
-*/
-  	// Scale the range of the data
-  	y.domain([0, d3.max(data.Eczema)]);
+    z.domain(conditions.map(function(c) { return c.id; }));
 
+    rightG.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
 
-  	// Add the valueline path.
-  	rightChart.append("path")
-  		.attr("class", "line")
-  		.attr(d3.svg.line().x(data.Likert).y(data.Eczema));
+    rightG.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y))
+      // .append("text")
+      //   .attr("transform", "rotate(-90)")
+      //   .attr("y", 6)
+      //   .attr("dy", "0.71em")
+      //   .attr("fill", "#000")
+      //   .text("Temperature, ºF");
 
-  	// Add the X Axis
-  	rightChart.append("g")
-  		.attr("class", "x axis")
-  		.attr("transform", "translate(0," + height + ")")
-  		.call(xAxis);
+    var condition = rightG.selectAll(".condition")
+      .data(conditions)
+      .enter().append("g")
+        .attr("class", "condition");
 
-  	// Add the Y Axis
-  	rightChart.append("g")
-  		.attr("class", "y axis")
-  		.call(yAxis);
+    condition.append("path")
+        .attr("class", "line")
+        .attr("d", function(d) { return line(d.values); })
+        .style("stroke", function(d) { return z(d.id); });
 
-  //});
+    // condition.append("text")
+    //     .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+    //     .attr("transform", function(d) { return "translate(" + x(d.value.Likert) + "," + y(d.value.percentage) + ")"; })
+    //     .attr("x", 3)
+    //     .attr("dy", "0.35em")
+    //     .style("font", "10px sans-serif")
+    //     .text(function(d) { return d.id; });
+  });
 }
 
 function addButton(name){
