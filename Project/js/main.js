@@ -2,8 +2,8 @@
 ** Script for the main page of the "Programmeerproject"
 */
 
-var width = 960,
-    height = 500,
+var width = 600,
+    height = 400,
     radius = Math.min(width, height) / 2;
 
 var color = d3.scale.ordinal()
@@ -29,7 +29,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
-d3.json("data/test.json", function(error, data) {
+d3.json("data/test2.json", function(error, data) {
   if (error) throw error;
 
 
@@ -44,7 +44,7 @@ d3.json("data/test.json", function(error, data) {
         resize();
         svg.selectAll(".arc").remove();
         //data.sector.forEach(addButton);
-        data[0].graphs.forEach(makeGraphs);
+        makeGraphs(data[0].graphs);
         })
       ;
 
@@ -86,38 +86,38 @@ function resize() {
 }
 
 function makeGraphs(data){
-  var margin = {left: 20, right: 20, bottom: 20, top:20},
-      rightWidth = 460 - margin.left - margin.right,
-      rightHeight = 460 - margin.bottom - margin.top;
+  var rightMargin = {left: 20, right: 20, bottom: 20, top:20},
+      rightWidth = 460 - rightMargin.left - rightMargin.right,
+      rightHeight = 460 - rightMargin.bottom - rightMargin.top;
 
-      console.log(data);
+
   // Set the ranges
   var	x = d3.scale.ordinal()
-  .domain(function(d) { return d.data.Likert; })
-  .range([0, rightWidth]);
+  .domain(data.Likert)
+  .rangeRoundPoints([0, rightWidth]);
 
   var	y = d3.scale.linear().range([rightHeight, 0]);
 
   // Define the axes
   var	xAxis = d3.svg.axis().scale(x)
-  	.orient("bottom").ticks(5);
+  	.orient("bottom");
 
   var	yAxis = d3.svg.axis().scale(y)
-  	.orient("left").ticks(5);
+  	.orient("left");
 
   // Define the line
-  var	valueline = d3.svg.line()
-  	.x(function(d) { return x(d.x); })
-  	.y(function(d) { return y(d.y); });
+  // var	valueline = d3.svg.line()
+  // 	.x(d.Likert)
+  // 	.y(d.Eczema);
 
   // Adds the svg canvas
-  var	rightChart = d3.select("body")
+  var	rightChart = d3.select("#rightGraphs")
   	.append("svg")
       .attr("id", "proof")
-  		.attr("width", width + margin.left + margin.right)
-  		.attr("height", height + margin.top + margin.bottom)
+  		.attr("width", rightWidth + rightMargin.left + rightMargin.right)
+  		.attr("height", rightHeight + rightMargin.top + rightMargin.bottom)
   	.append("g")
-  		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  		.attr("transform", "translate(" + rightMargin.left + "," + rightMargin.top + ")");
 
   /* Get the data
   d3.csv("data1.csv", function(error, data) {
@@ -127,12 +127,13 @@ function makeGraphs(data){
   	});
 */
   	// Scale the range of the data
-  	y.domain([0, d3.max(data, function(d) { return d.Chrons; })]);
+  	y.domain([0, d3.max(data.Eczema)]);
+
 
   	// Add the valueline path.
   	rightChart.append("path")
   		.attr("class", "line")
-  		.attr("d", valueline(data));
+  		.attr(d3.svg.line().x(data.Likert).y(data.Eczema));
 
   	// Add the X Axis
   	rightChart.append("g")

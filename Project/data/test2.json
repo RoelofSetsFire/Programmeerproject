@@ -1,0 +1,12 @@
+[{"sector": "Homeopathy",
+  "spending": 400,
+  "graphs": {
+   "Likert": ["-3", "-2", "-1", "0", "1", "2"],
+   "Eczema": [0, 5, 7, 8, 9, 20],
+   "Asthma": [0, 6, 8, 11, 13, 25]}},
+{"sector": "Myers-Briggs", "spending": 400},
+{"sector": "Accupuncture", "spending": 83},
+{"sector": "Chiropractic", "spending": 3902},
+{"sector": "Reiki", "spending": 421},
+{"sector": "Aromatherapy", "spending": 1000},
+{"sector": "Psychics", "spending": 2000}]
