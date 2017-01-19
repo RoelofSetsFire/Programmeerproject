@@ -28,17 +28,23 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-d3.csv("data/data.csv", type, function(error, data) {
+
+d3.json("data/test.json", function(error, data) {
   if (error) throw error;
+
+
 
   var g = svg.selectAll(".arc")
       .data(pie(data))
     .enter().append("g")
       .attr("class", "arc")
       .on("click", function(d,i){
+        selection = d3.select(this);
+        //.attr
         resize();
         svg.selectAll(".arc").remove();
-        addButton();
+        //data.sector.forEach(addButton);
+        data[0].graphs.forEach(makeGraphs);
         })
       ;
 
@@ -79,13 +85,17 @@ function resize() {
   .attr("height", height / 2);
 }
 
-function makeGraphs(){
+function makeGraphs(data){
   var margin = {left: 20, right: 20, bottom: 20, top:20},
       rightWidth = 460 - margin.left - margin.right,
       rightHeight = 460 - margin.bottom - margin.top;
 
+      console.log(data);
   // Set the ranges
-  var	x = d3.scale.ordinal().range([0, rightWidth]);
+  var	x = d3.scale.ordinal()
+  .domain(function(d) { return d.data.Likert; })
+  .range([0, rightWidth]);
+
   var	y = d3.scale.linear().range([rightHeight, 0]);
 
   // Define the axes
@@ -109,54 +119,40 @@ function makeGraphs(){
   	.append("g")
   		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Get the data
+  /* Get the data
   d3.csv("data1.csv", function(error, data) {
   	data.forEach(function(d) {
   		d.date = parseDate(d.date);
   		d.close = +d.close;
   	});
-
+*/
   	// Scale the range of the data
-  	x.domain([0, d3.max(data, function(d) { return d.date; })]);
-  	y.domain([0, d3.max(data, function(d) { return d.close; })]);
+  	y.domain([0, d3.max(data, function(d) { return d.Chrons; })]);
 
   	// Add the valueline path.
-  	chart.append("path")
+  	rightChart.append("path")
   		.attr("class", "line")
   		.attr("d", valueline(data));
 
   	// Add the X Axis
-  	chart.append("g")
+  	rightChart.append("g")
   		.attr("class", "x axis")
   		.attr("transform", "translate(0," + height + ")")
   		.call(xAxis);
 
   	// Add the Y Axis
-  	chart.append("g")
+  	rightChart.append("g")
   		.attr("class", "y axis")
   		.call(yAxis);
 
-  });
+  //});
 }
 
-function addButton(){
+function addButton(name){
   var form = d3.select("#button")
-      .append("form")
-      .html("Enter a number:")
-
-  form.html("Show/hide lines:")
-    .append("input")
-    .attr("type", "button")
-    .attr("name", "toggle")
-    .attr("value", "Toggle")
-    .attr("onclick", "togglePressed()")
-
-  form.append("input")
-      .attr("type", "text")
-      .attr("name", "num")
 
   form.append("input")
       .attr("type", "button")
-      .attr("value", "Add")
-      .attr("onclick", "printNum(num.value)");
+      .attr("value", name.sector)
+      .attr("onclick", console.log(name));
 }
