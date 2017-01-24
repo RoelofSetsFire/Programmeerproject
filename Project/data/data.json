@@ -1,7 +1,8 @@
 [
  {
    "sector": "Myers-Briggs",
-   "spending": 400
+   "spending": 400,
+   "graphs": [{"config": {"csv": "data/MyersBriggs.csv", "measure": "Percentage", "width": 450, "height": 300}}]
  },
  {
    "sector": "Accupuncture",
@@ -22,5 +23,11 @@
  {
    "sector": "Psychics",
    "spending": 2000
+ },
+ {
+   "sector": "Homeopathy",
+   "spending": 400,
+   "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage", "width": 450, "height": 300, "location": "Top"}},
+     {"config":{"csv": "data/Roelof.csv", "measure": "Pannenkoeken", "width": 450, "height": 300, "location": "Bottom"}}]
  }
 ]
