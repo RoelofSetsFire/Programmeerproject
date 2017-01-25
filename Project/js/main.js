@@ -63,7 +63,7 @@ d3.json("data/data.json", function(error, data) {
      .on("click", function(d,i){
        //resize();
       //  svg.selectAll(".arc").remove();
-       d.data.graphs.forEach(function(d){makeBar(d.config);});
+       d.data.graphs.forEach(function(d){makeLine(d.config);});
        });
 
   g.append("text")

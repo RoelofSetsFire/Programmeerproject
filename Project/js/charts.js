@@ -1,5 +1,5 @@
 function makeBar(config){
-var svg = d3.select("#right"),
+var svg = d3.select("#right").append("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = config.width - margin.left - margin.right,
     height = config.height - margin.top - margin.bottom,
@@ -85,7 +85,7 @@ d3.csv(config.csv, function(d, i, columns) {
 }
 
 function makeLine(config){
-var svg = d3.select("#right"),
+var svg = d3.select("#right").append("svg"),
     margin = {top: 20, right: 80, bottom: 30, left: 50},
     width = config.width - margin.left - margin.right,
     height = config.height - margin.top - margin.bottom,
