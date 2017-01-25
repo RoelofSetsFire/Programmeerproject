@@ -25,7 +25,7 @@ var pie = d3.pie()
     //.sort(null)
     .value(function(d) { return d.spending; });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.selectAll("#left").append("svg")
     .attr("id", "spending")
     .attr("width", width)
     .attr("height", height)
@@ -62,8 +62,8 @@ d3.json("data/data.json", function(error, data) {
                 })
      .on("click", function(d,i){
        //resize();
-       svg.selectAll(".arc").remove();
-       d.data.graphs.forEach(function(d){makeLine(d.config);});
+      //  svg.selectAll(".arc").remove();
+       d.data.graphs.forEach(function(d){makeBar(d.config);});
        });
 
   g.append("text")
