@@ -36,6 +36,7 @@ var svg = d3.selectAll("#left").append("svg")
 d3.json("data/data.json", function(error, data) {
   if (error) throw error;
 
+
   var g = svg.selectAll(".arc")
       .data(pie(data))
     .enter().append("g")
@@ -63,7 +64,7 @@ d3.json("data/data.json", function(error, data) {
      .on("click", function(d,i){
        //resize();
       //  svg.selectAll(".arc").remove();
-       d.data.graphs.forEach(function(d){makeLine(d.config);});
+       d.data.graphs.forEach(function(d){makeBar(d.config);});
        });
 
   g.append("text")
@@ -71,19 +72,37 @@ d3.json("data/data.json", function(error, data) {
       .attr("dy", ".35em")
       .text(function(d) { return d.data.spending; });
 
+      
+      var legend = g.append("g")
+          .attr("font-family", "sans-serif")
+          .attr("font-size", 10)
+          .attr("text-anchor", "end")
+        .selectAll("g")
+        .data(function(d){temp.push(d.data.sector);})
+        .enter().append("g")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+          .attr("x", width - 19)
+          .attr("width", 19)
+          .attr("height", 19)
+          .attr("fill", color);
+
+      legend.append("text")
+          .attr("x", width - 24)
+          .attr("y", 9.5)
+          .attr("dy", "0.32em")
+          .text(function(d) { return d; });
+
   // var padding = 20,
   //   legx = radius + padding,
   //   legend = svg.append("g")
   //   .attr("class", "legend")
   //   .attr("transform", "translate(" + legx + ", 0)")
   //   .style("font-size", "12px")
-  //   .call(d3.legend);
+  //   .call(d3.legendOrdinal);
 });
 
-function type(d) {
-  d.spending = +d.spending;
-  return d;
-}
 
 function resize() {
   d3.select("#spending")
@@ -91,14 +110,4 @@ function resize() {
   .duration(1500)
   .attr("width", width / 2)
   .attr("height", height / 2);
-}
-
-
-function addButton(name){
-  var form = d3.select("#button")
-
-  form.append("input")
-      .attr("type", "button")
-      .attr("value", name.sector)
-      .attr("onclick", console.log(name));
 }
