@@ -25,8 +25,9 @@
    "spending": 2000
  },
  {
+   "practitioners": 23.913,
    "sector": "Homeopathy",
    "spending": 400,
-   "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage", "width": 450, "height": 300, "location": "Top"}}]
+   "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage", "width": 450, "height": 300}, "type": "bar"}]
  }
 ]

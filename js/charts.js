@@ -1,3 +1,111 @@
+/* by Roelof Konijnenberg
+** Scripts for all the graphs of my "Programmeerproject"
+*/
+
+function mainGraph(){
+  var width = 450,
+    height = 300,
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scaleOrdinal()
+    .range(["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"]);
+
+var arc = d3.arc()
+    .outerRadius(radius - 20)
+    .innerRadius(0);
+
+var arcOver = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+var labelArc = d3.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+
+var pie = d3.pie()
+    //.sort(null)
+    .value(function(d) { return d.spending; });
+
+var svg = d3.selectAll("#left").append("svg")
+    .attr("id", "spending")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+d3.json("data/data.json", function(error, data) {
+  if (error) throw error;
+
+
+  var g = svg.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data.sector); });
+
+  g.append("path")
+     .attr("d", arc)
+     .attr("data-legend", function(d) { return d.data.sector; })
+     .attr("data-legend-pos", function(d, i) { return i; })
+     .style("fill", function(d) { return color(d.data.sector); })
+     .on("mouseover", function(d) {
+                 d3.select(this).transition()
+                    .duration(1000)
+                    .attr("d", arcOver);
+                })
+     .on("mouseout", function(d) {
+                 d3.select(this).transition()
+                    .duration(1000)
+                    .attr("d", arc);
+                })
+     .on("click", function(d,i){
+       //resize();
+      //  svg.selectAll(".arc").remove();
+       d.data.graphs.forEach(function(d){
+         if (d.type == "line"){
+           makeLine(d.config);
+         }
+         else if (d.type == "bar"){
+           makeBar(d.config);
+         }}
+         );
+       });
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.spending; });
+
+
+      // var legend = g.append("g")
+      //     .attr("font-family", "sans-serif")
+      //     .attr("font-size", 10)
+      //     .attr("text-anchor", "end")
+      //   .selectAll("g")
+      //   .data()
+      //   .enter().append("g")
+      //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+      //
+      // legend.append("rect")
+      //     .attr("x", width - 19)
+      //     .attr("width", 19)
+      //     .attr("height", 19)
+      //     .attr("fill", color);
+      //
+      // legend.append("text")
+      //     .attr("x", width - 24)
+      //     .attr("y", 9.5)
+      //     .attr("dy", "0.32em")
+      //     .text(function(d) { return d; });
+
+});
+}
+
+
 function makeBar(config){
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = config.width - margin.left - margin.right,
@@ -61,7 +169,7 @@ d3.csv(config.csv, function(d, i, columns) {
       .attr("text-anchor", "start")
       .text(config.measure);
 
-      
+
   var legend = g.append("g")
       .attr("font-family", "sans-serif")
       .attr("font-size", 10)
@@ -96,7 +204,7 @@ var margin = {top: 20, right: 20, bottom: 20, left: 20},
 var x = d3.scaleBand()
     .rangeRound([0, width]) ,
     y = d3.scaleLinear().range([height, 0]),
-    z = d3.scaleOrdinal(d3.schemeCategory10);
+    z = d3.scaleOrdinal(d3.schemeCategory20);
 
 var line = d3.line()
     .curve(d3.curveBasis)
