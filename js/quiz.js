@@ -26,16 +26,16 @@ var quiz = [
            "explanation" : "The Myers-Briggs test, used by some companies to evaluate a candidates suitability for a job, can have wildly varying results even when taken at relatively close intervals.",
        },
        {
-           "question" : "Q1: What are the ailments chiropractors claim they can help with?",
+           "question" : "Q3: How much is annually spent on psychics in the US?",
            "choices" : [
-                                   "Back problems",
-                                   "Headaches and migraines originating from the neck",
-                                   "ADHD",
-                                   "Autism",
-                                   "All of the above"
+                                   "2 billion dollars",
+                                   "1 billion dollars",
+                                   "800 million dollars",
+                                   "500 million dollars",
+                                   "50 million dollars"
                                ],
-           "correct" : "All of the above",
-           "explanation" : "Despite it only having been proven to work for back problems, a lot of chiropractors market themselves as primary care healers who can give aid for an amazing variety of disorders.",
+           "correct" : "2 billion dollars",
+           "explanation" : ".....I don't even know what to say about this one.",
        }
    ];
 
