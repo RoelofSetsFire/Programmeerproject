@@ -2,26 +2,32 @@
  {
    "sector": "Myers-Briggs",
    "spending": 400,
+   "practitioners": 6,
    "graphs": [{"config": {"csv": "data/MyersBriggs.csv", "measure": "Percentage", "width": 450, "height": 300}}]
  },
  {
    "sector": "Accupuncture",
+   "practitioners": 6,
    "spending": 83
  },
  {
    "sector": "Chiropractic",
+   "practitioners": 6,
    "spending": 3902
  },
  {
    "sector": "Reiki",
+   "practitioners": 6,
    "spending": 421
  },
  {
    "sector": "Aromatherapy",
+   "practitioners": 6,
    "spending": 1000
  },
  {
    "sector": "Psychics",
+   "practitioners": 6,
    "spending": 2000
  },
  {
@@ -29,6 +35,7 @@
    "practitioners": 23.913,
    "sector": "Homeopathy",
    "spending": 400,
+   "practitioners": 6,
    "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage", "width": 450, "height": 300}, "type": "line"},
      {"config": {"csv": "data/Homeo2.csv", "measure": "Percentage", "width": 450, "height": 300}, "type": "bar"}]
  }

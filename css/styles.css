@@ -1,3 +1,8 @@
+.control.glyphicon {
+  font-size: 30px;
+  position: static;
+}
+
 body {
 background: #444444;
 font-family: verdana, arial, sans-serif;
@@ -28,8 +33,18 @@ top: 0px;
 }
 
 div#left {
-width: 40%;
+width: 50%;
 float: left;
+background: #FFFFFF;
+}
+div#leftTop {
+width: 100%;
+float: top;
+background: #FFFFFF;
+}
+div#leftBottom {
+width: 100%;
+float: bottom;
 background: #FFFFFF;
 }
 div#buttons {
@@ -43,7 +58,7 @@ div#data{
   background: #FFFFFF;
 }
 div#right {
-width: 60%;
+width: 50%;
 float: right;
 background: #FFFFFF;
 }
@@ -84,7 +99,6 @@ border: 1px solid #FFFFFF;
 }
 
 .legend rect {
-  fill:white;
   stroke:black;}
 
 .line {

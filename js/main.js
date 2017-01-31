@@ -28,13 +28,20 @@ var pie = d3.pie()
     //.sort(null)
     .value(function(d) { return d.spending; });
 
-var svg = d3.selectAll("#left").append("svg")
-    .attr("id", "spending")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    var mySvg = d3.selectAll("#leftTop").append("svg")
+        .attr("id", "spending")
+        .attr("width", width)
+        .attr("height", height)
 
+        var svg = mySvg
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+var svg2 = d3.selectAll("#leftBottom").append("svg")
+    .attr("id", "practitioners")
+    .attr("width", width)
+    .attr("height", height);
 
 d3.json("data/data.json", function(error, data) {
   if (error) throw error;
@@ -51,8 +58,8 @@ d3.json("data/data.json", function(error, data) {
 
   g.append("path")
      .attr("d", arc)
-     .attr("data-legend", function(d) { return d.data.sector; })
-     .attr("data-legend-pos", function(d, i) { return i; })
+    //  .attr("data-legend", function(d) { return d.data.sector; })
+    //  .attr("data-legend-pos", function(d, i) { return i; })
      .style("fill", function(d) { return color(d.data.sector); })
      .on("mouseover", function(d) {
                  d3.select(this).transition()
@@ -65,20 +72,21 @@ d3.json("data/data.json", function(error, data) {
                     .attr("d", arc);
                 })
      .on("click", function(d,i){
-       //resize();
-        d3.select("#spending").remove();
-        d3.select("#left").append("p").attr("id", "backgroundinfo").append("text").text(d.data.background);
-        d3.select("#left").append("input")
-        .attr("type", "button")
-        .attr("class", "button")
-        .attr("id", "reset")
-        .attr("value", "reset")
-        .on("click", function(){
-          d3.select("#right").selectAll("svg").remove();
-          d3.select("#backgroundinfo").remove();
-          mainGraph();
-          d3.selectAll(".button").remove();
-          });
+
+        d3.select("#spending").transition().duration(1500).attr("height", 0).attr("width", 0);
+        setTimeout(function(){
+          d3.select("#leftTop").append("p").attr("id", "backgroundinfo").append("text").text(d.data.background);
+          d3.select("#leftTop").append("input")
+          .attr("type", "button")
+          .attr("class", "button")
+          .attr("id", "reset")
+          .attr("value", "reset")
+          .on("click", function(){
+            d3.select("#right").selectAll("svg").remove();
+            d3.select("#backgroundinfo").remove();
+            mainGraph();
+            d3.selectAll(".button").remove();
+          });}, 1500);
 
         d.data.graphs.forEach(function(d){
          if (d.type == "line"){
@@ -96,30 +104,48 @@ d3.json("data/data.json", function(error, data) {
       .text(function(d) { return d.data.spending; });
 
 
-      // var legend = g.append("g")
-      //     .attr("font-family", "sans-serif")
-      //     .attr("font-size", 10)
-      //     .attr("text-anchor", "end")
-      //   .selectAll("g")
-      //   .data()
-      //   .enter().append("g")
-      //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-      //
-      // legend.append("rect")
-      //     .attr("x", width - 19)
-      //     .attr("width", 19)
-      //     .attr("height", 19)
-      //     .attr("fill", color);
-      //
-      // legend.append("text")
-      //     .attr("x", width - 24)
-      //     .attr("y", 9.5)
-      //     .attr("dy", "0.32em")
-      //     .text(function(d) { return d; });
+      var legendG = mySvg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
+        .data(pie(data))
+        .enter().append("g")
+        .attr("transform", function(d,i){
+          return "translate(" + (width - 70) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+        })
+        .attr("class", "legend");
+
+      legendG.append("rect") // make a matching color rect
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", function(d) {
+          return color(d.data.sector);
+        });
+
+      legendG.append("text") // add the text
+        .text(function(d){
+          return d.data.sector;
+        })
+        .style("font-size", 12)
+        .attr("y", 10)
+        .attr("x", 11);
+
+var start = 0;
+data.forEach(function(d, start){
+
+var practColor = color(d.sector);
+
+          for(var i = 0; i < d.practitioners; i++, start++){
+            svg2.append("svg:foreignObject")
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("style", "color:" + practColor)
+            // .attr("y", "30px")
+            .attr("x", start * 30 + "px")
+          .append("xhtml:span")
+            .attr("class", "control glyphicon glyphicon-user");
+        };
+});
 
 });
 }
-
 
 function makeBar(config){
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
