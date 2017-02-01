@@ -5,10 +5,11 @@
 mainGraph();
 
 function mainGraph(){
-  var width = 450,
-    height = 300,
+  var width = leftTop.offsetWidth,
+    height = leftTop.offsetHeight,
     radius = Math.min(width, height) / 2;
-
+console.log(width);
+console.log(height);
 var color = d3.scaleOrdinal()
     .range(["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"]);
 
@@ -38,11 +39,6 @@ var pie = d3.pie()
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
-var svg2 = d3.selectAll("#leftBottom").append("svg")
-    .attr("id", "practitioners")
-    .attr("width", width)
-    .attr("height", height);
-
 d3.json("data/data.json", function(error, data) {
   if (error) throw error;
 
@@ -58,8 +54,6 @@ d3.json("data/data.json", function(error, data) {
 
   g.append("path")
      .attr("d", arc)
-    //  .attr("data-legend", function(d) { return d.data.sector; })
-    //  .attr("data-legend-pos", function(d, i) { return i; })
      .style("fill", function(d) { return color(d.data.sector); })
      .on("mouseover", function(d) {
                  d3.select(this).transition()
@@ -72,10 +66,11 @@ d3.json("data/data.json", function(error, data) {
                     .attr("d", arc);
                 })
      .on("click", function(d,i){
-
-        d3.select("#spending").transition().duration(1500).attr("height", 0).attr("width", 0);
+        d3.select("#spending").transition().duration(500).style("opacity", 0);
         setTimeout(function(){
-          d3.select("#leftTop").append("p").attr("id", "backgroundinfo").append("text").text(d.data.background);
+          d3.select("#spending").remove();
+          d3.select("#leftTop").append("p").attr("id", "backgroundinfo").style("opacity", 0 ).append("text").text(d.data.background);
+          d3.select("#backgroundinfo").transition().duration(500).style("opacity", 1);
           d3.select("#leftTop").append("input")
           .attr("type", "button")
           .attr("class", "button")
@@ -86,7 +81,7 @@ d3.json("data/data.json", function(error, data) {
             d3.select("#backgroundinfo").remove();
             mainGraph();
             d3.selectAll(".button").remove();
-          });}, 1500);
+          });}, 500);
 
         d.data.graphs.forEach(function(d){
          if (d.type == "line"){
@@ -108,7 +103,7 @@ d3.json("data/data.json", function(error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("transform", function(d,i){
-          return "translate(" + (width - 70) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+          return "translate(" + (width - 120) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
         })
         .attr("class", "legend");
 
@@ -127,21 +122,12 @@ d3.json("data/data.json", function(error, data) {
         .attr("y", 10)
         .attr("x", 11);
 
-var start = 0;
-data.forEach(function(d, start){
 
+data.forEach(function(d, i){
 var practColor = color(d.sector);
 
-          for(var i = 0; i < d.practitioners; i++, start++){
-            svg2.append("svg:foreignObject")
-            .attr("width", 30)
-            .attr("height", 30)
-            .attr("style", "color:" + practColor)
-            // .attr("y", "30px")
-            .attr("x", start * 30 + "px")
-          .append("xhtml:span")
-            .attr("class", "control glyphicon glyphicon-user");
-        };
+    for(var j = 0; j < d.practitioners; j++){
+    d3.select("#leftBottom").append("span").attr("class", "control glyphicon glyphicon-user").attr("style", "color:" + practColor).attr("id", "practitionersOf" + d.sector);};
 });
 
 });
@@ -300,14 +286,6 @@ d3.csv(config.csv, type, function(error, data) {
       .attr("id", function (d) { return d.id; })
       .attr("active", "off")
       .style("stroke", function(d) { return z(d.id); });
-
-  // valueLine.append("text")
-  //     .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-  //     .attr("transform", function(d) { return "translate(" + x(d.value.measure) + "," + y(d.value.lineValue) + ")"; })
-  //     .attr("x", 3)
-  //     .attr("dy", "0.35em")
-  //     .style("font", "10px sans-serif")
-  //     .text(function(d) { return d.id; });
 
 
       var buttons = data.columns.slice(1);
