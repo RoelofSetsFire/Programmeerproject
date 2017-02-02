@@ -1,3 +1,71 @@
+#choice-block {
+    display:block;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+#submitbutton {
+    background:#5a6b8c;
+}
+#submitbutton:hover {
+    background:#7b8da6;
+}
+#mainbutton {
+    background:#5a6b8c;
+}
+#mainbutton:hover {
+    background:#7b8da6;
+}
+#explanation {
+    margin:0 auto;
+    padding:20px;
+    width:75%;
+}
+#frame {
+    max-width:620px;
+    width:auto;
+    border:1px solid #ccc;
+    background:#fff;
+    padding:10px;
+    margin:3px;
+}
+body {
+    line-height:1;
+    font:normal 0.9em/1em"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+ol, ul {
+    list-style:none;
+}
+strong {
+    font-weight:700;
+}
+p.pager {
+    margin:5px 0 5px;
+    font:bold 1em/1em"Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#999;
+}
+img.question-image {
+    display:block;
+    max-width:250px;
+    margin:10px auto;
+    border:1px solid #ccc;
+    width:100%;
+    height:auto;
+}
+.choice-box {
+    display:block;
+    text-align:center;
+    margin:8px auto;
+    padding:10px 0;
+    border:1px solid #666;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+div.education{
+
+}
 div.tooltip {
   position: absolute;
   text-align: center;
@@ -10,8 +78,20 @@ div.tooltip {
   border-radius: 8px;
   pointer-events: none;
 }
+div.tooltip2{
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 56px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
 .control.glyphicon {
-  font-size: 30px;
+  font-size: 20px;
   padding: 2px;
   position: static;
 }
@@ -20,7 +100,7 @@ html {
 }
 body {
 height: 100%;
-background: #444444;
+background: #FFFFFF;
 font-family: verdana, arial, sans-serif;
 color: #444444;
 font-size: 12px;
@@ -28,7 +108,7 @@ margin: 0px;
 }
 
 div#container {
-width: 100%;
+width: 90%;
 height: 100%;
 margin: 0px auto;
 background: #FFFFFF;
@@ -36,18 +116,17 @@ padding: 0px;
 }
 
 div#content {
-width: 90%;
-height: 100%;
-padding-top: 100px;
+width: 100%;
+height: 90%;
 background: #FFFFFF;
+float: bottom;
 }
 
 div#header {
-width: 800px;
-height: 100px;
-background: #888888;
-position: absolute;
-top: 0px;
+width: 100%;
+height: 10%;
+background: #FFFFFF;
+float: top;
 }
 
 div#left {
@@ -58,26 +137,41 @@ background: #FFFFFF;
 }
 div#leftTop {
 width: 100%;
-height: 50%;
+height: 40%;
 background: #FFFFFF;
 }
 div#leftBottom {
 width: 100%;
-height: 50%;
+height: 60%;
+background: #FFFFFF;
+}
+div#leftBottomLeft {
+float: left;
+width: 50%;
+height: 100%;
+background: #FFFFFF;
+}
+div#leftBottomRight {
+float: right;
+width: 50%;
+height: 100%;
 background: #FFFFFF;
 }
 div#buttons {
 width: 10%;
+height: 100%;
 float: left;
 background: #FFFFFF;
 }
-div#data{
+div#rightGraphs{
   width: 90%;
+  Height: 100%;
   float: right;
   background: #FFFFFF;
 }
 div#right {
 width: 50%;
+height: 100%;
 float: right;
 background: #FFFFFF;
 }

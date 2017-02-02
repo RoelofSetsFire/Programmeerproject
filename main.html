@@ -1,35 +1,50 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>Programmeerproject</title>
-  <meta name="description" content="Programmeerproject">
-  <meta name="author" content="Roelof Konijnenberg">
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
-
+	<meta charset="utf-8">
+	<title>(Pseu)do not waste your money</title>
+	<meta content="Programmeerproject" name="description">
+	<meta content="Roelof Konijnenberg" name="author">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css?v=1.0" rel="stylesheet">
 </head>
-
 <body>
-  <div id="container">
-
-    <div id="content">
-
-      <div id="left"><div id="leftTop"></div><div id="leftBottom"></div></div>
-
-      <div id="right"><div id="buttons"></div><div id="data"></div></div>
-
-    </div>
-  </div>
-  <script src="js/d3.v4.min.js"></script>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-
-
+	<div id="container">
+		<div id="header"></div>
+		<div id="content">
+			<div id="left">
+				<div id="leftTop"></div>
+				<div id="leftBottom">
+					<div id="leftBottomLeft"></div>
+					<div id="leftBottomRight">
+						<div class="education">
+							&lt; High school diploma: <span id="usersByEducation1"></span>
+						</div>
+						<div class="education">
+							High school diploma or GED: <span id="usersByEducation2"></span>
+						</div>
+						<div class="education">
+							Some college education: <span id="usersByEducation3"></span>
+						</div>
+						<div class="education">
+							College education or higher: <span id="usersByEducation4"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="right">
+				<div id="buttons"></div>
+				<div id="rightGraphs"></div>
+			</div>
+		</div>
+	</div>
+	<script src="js/d3.v4.min.js">
+	</script>
+	<script src="js/jquery.min.js">
+	</script>
+	<script src="js/bootstrap.min.js">
+	</script>
+	<script src="js/main.js">
+	</script>
 </body>
 </html>

@@ -1,24 +1,55 @@
 # Programmeerproject
 
-This project aims to show the amount of money that is spent on or in the name of pseudo-science, like the Myer Briggs personality type test. The main visualization will be a bar-chart (A in the sketch), color coded to differentiate between merely unproven or actually disproven pseudo-science. Clicking a bar chart should lead to background information (C) on what the specific item actually entails, link to or reference articles, and display other relevant or interesting information such as global popularity(B), graphs with measured effect sizes and the like.
+![screenshot](doc/Screenshot.jpg)
 
-To enhance the participation of the users a quiz will also be added, possibly making them choose between real and pseudo-science? Finishing the quiz should report interesting stats on the person taking the quiz, as well as the person before them. The quiz will touch upon the same science as the rest of the page.
-
-* Chart on spending on pseudo-science (MVP)
-* Background info and related charts (MVP)
-* Reference to articles (Optional)
-* Quiz (MVP)
-* Stats related to quiz (Optional)
+This project aims to show the amount of money that is spent on or in the name of pseudo-science, like the Myer-Briggs personality type test. Starting out with a quiz users will get a couple of questions meant to surprise and entice the user to want to find out more. Following this they are led to the main visualization which they can explore at their leisure, showing the startling amounts of money these unproven and unscientific fields garner. Choosing one of the fields will give a description (source: Wikipedia) of said field, as well as some visualizations showing the shaky foundations (or total lack thereof) that the field is based on.
 
 
-## Possible limitations that could arise
+Thanks go out to Mike Bostock for making his D3 templates so readily available. They were used as the basis for the graphs which where then modified to fit my needs. Also to Fiddle user natmit who created the fiddle the quiz was based off of.
 
-The main limitation that I can see arising is a lack of hard data; if this happens however the choice for less clear data could be made in order to still make a visualization.
+## Data Sources
 
-Ways to make the subject matter interesting and visually appealing will also have to be looked at; while safe a bar-chart isn't exactly sexy, so research into other options is a legitimate consideration.
+* https://www.cdc.gov/nchs/data/nhsr/nhsr012.pdf
 
-Technically the biggest difficulty is going to be implementing the quiz, as this would require a database/sql if it is to be implemented in it's most interesting form. With the help at hand this should not be a problem that cannot be overcome though.
+### Myers-Briggs
+* https://www.theguardian.com/science/brain-flapping/2013/mar/19/myers-briggs-test-unscientific
+* http://www.indiana.edu/~jobtalk/HRMWebsite/hrm/articles/develop/mbti.pdf (measuring the mbti)
+* http://www.smithsonianmag.com/smart-news/the-myers-briggs-personality-test-is-pretty-much-meaningless-9359770/
+* http://rer.sagepub.com/content/63/4/467.abstract
+* http://www.researchgate.net/publication/232494957_Cautionary_comments_regarding_the_Myers-Briggs_Type_Indicator/file/32bfe50cb18c2dbfd4.pdf
+* http://www.sciencedirect.com/science/article/pii/0191886996000335
+* https://www.psychologytoday.com/blog/give-and-take/201309/goodbye-mbti-the-fad-won-t-die
+* http://journals.sagepub.com/doi/abs/10.1177/014920639602200103 (literature review)
 
+### Chiropractic
 
-### Review of similar visualization
-None found so far. First thing tomorrow should be to keep looking.
+* https://www.ncbi.nlm.nih.gov/pubmed/20184717 (effectiveness report)
+* https://www.ncbi.nlm.nih.gov/pubmed/20642715 (deaths after chiropractic)
+* https://www.theguardian.com/lifeandstyle/2012/may/14/dangers-chiropractic-treatment-under-reported
+* https://www.theguardian.com/commentisfree/2008/apr/19/controversiesinscience-health
+* https://www.ibisworld.com/industry/default.aspx?indid=1559 (statistics for dataset)
+
+### Homeopathy
+
+* https://www.theguardian.com/science/blog/2012/apr/03/homeopathy-why-i-changed-my-mind
+* https://www.ncbi.nlm.nih.gov/pubmed/12492603 (systemetic review of systemetic reviews)
+* https://www.ncbi.nlm.nih.gov/pubmed/16296912 (observational study (positive effect))
+* http://online.liebertpub.com.proxy.uba.uva.nl:2048/doi/pdf/10.1089/acm.2005.11.793
+* http://www.nutraceuticalsworld.com/issues/2013-07/view_industry-news/us-sales-of-homeopathic-herbal-remedies-reach-64-billion (dataset)
+* http://www.transparencymarketresearch.com/pressrelease/homeopathy-product-market.htm (dataset)
+
+### Psychics
+* https://www.theguardian.com/science/2012/aug/16/psychic-sally-morgan-deluded-harmless
+* http://moh2005.proboards.com/thread/10178?page=1 (forum on sally specifically, more for my own entertainment :p)
+* https://www.ibisworld.com/industry/psychic-services.html (dataset, also includes astrology)
+
+### Faith healing / Reiki
+* https://www.ncbi.nlm.nih.gov/pubmed/23210468
+* http://www.reikitablereviews.com/wp-content/uploads/2015/01/infographic_massage_therapy_industry.jpg
+
+### Aromatherapy
+* http://www.grandviewresearch.com/industry-analysis/essential-oils-market
+* http://www.livescience.com/52080-essential-oils-science-health-effects.html
+* https://www.sciencedaily.com/releases/2008/03/080303093553.htm
+* http://bjgp.org/content/bjgp/50/455/493.full.pdf (Ernst 2000)
+* http://www.sciencedirect.com/science/article/pii/S0378512212000060 (Ernst 2012)

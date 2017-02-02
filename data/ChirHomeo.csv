@@ -1,0 +1,13 @@
+measure,Chiropracy,Homeopathy
+Allergy mention,55,85
+Allergy diagnosis,11,65
+Allergy treatment,30,75
+Efficacy for allergy,6,29
+Sensitivity mention,48,73
+Sensitivity diagnosis,2,53
+Sensitivity treatment,3,34
+Efficacy for sensitivity,0,7
+Asthma mention,56,74
+Asthma diagnosis,3,5
+Asthma treatment,38,63
+Efficacy for asthma,10,14

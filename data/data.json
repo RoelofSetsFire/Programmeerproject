@@ -1,42 +1,52 @@
 [
   {
     "background": "Homeopathy or homoeopathy is a system of alternative medicine created in 1796 by Samuel Hahnemann, based on his doctrine of like cures like (similia similibus curentur), a claim that a substance that causes the symptoms of a disease in healthy people would cure similar symptoms in sick people. Homeopathy is a pseudoscience – a belief that is incorrectly presented as scientific. Homeopathic preparations are not effective for treating any condition; large-scale studies have found homeopathy to be no more effective than a placebo, suggesting that any positive effects that follow treatment are only due to the placebo effect and normal recovery from illness. Hahnemann believed the underlying causes of disease were phenomena that he termed miasms, and that homeopathic preparations addressed these. The preparations are manufactured using a process of homeopathic dilution, in which a chosen substance is repeatedly diluted in alcohol or distilled water, each time with the containing vessel being bashed against an elastic material, (commonly a leather-bound book). Dilution typically continues well past the point where no molecules of the original substance remain.",
-    "practitioners": 23.913,
     "sector": "Homeopathy",
-    "spending": 6400,
-    "practitioners": 6,
-    "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage", "width": 450, "height": 300}, "type": "line"},
-      {"config": {"csv": "data/Homeo2.csv", "measure": "Percentage", "width": 450, "height": 300}, "type": "bar"}]
+    "users": 15046000,
+    "practitioners": 23913,
+    "spending": 6400000000,
+        "graphs": [{"config": {"csv": "data/Homeo.csv", "measure": "Percentage"}, "type": "bar"},
+      {"config": {"csv": "data/ChirHomeo.csv", "measure": "Percentage"}, "type": "bar"}]
   },
  {
    "background": "Chiropractic is a form of alternative medicine concerned with the diagnosis and treatment of unverified mechanical disorders of the musculoskeletal system, especially the spine. Proponents believe that such disorders affect general health via the nervous system. The main chiropractic treatment technique involves manual therapy, especially spinal manipulation therapy (SMT), manipulations of other joints and soft tissues. Its foundation is at odds with mainstream medicine, and chiropractic is sustained by pseudoscientific ideas such as subluxation and 'innate intelligence'. Chiropractic is widely established in the United States, Canada, and Australia. It has had a strong political base and sustained demand for services; in recent decades gaining increased acceptance among conventional physicians and health plans in the U.S., and evidence-based medicine has been used to review research studies and generate practice guidelines.Most who seek chiropractic care do so for low back pain, and back and neck pain are considered the specialties of chiropractic, but many chiropractors treat ailments other than musculoskeletal issues. Many chiropractors describe themselves as primary care providers, despite chiropractic clinical training not supporting the requirements to perform such care, with their role in primary care being limited and disputed. Attitudes towards mainstream medicine vary among chiropractors, who often offer conventional treatments such as physical therapy and lifestyle counseling as well, and it may be difficult for the lay person to distinguish the unscientific from the scientific.",
    "sector": "Chiropractic",
-   "practitioners": 6,
-   "spending": 3902
+   "users": 19369000,
+   "practitioners": 90000,
+   "spending": 3902000000,
+   "graphs": [{"config": {"csv": "data/Chiropractic.csv", "measure": "Percentage"}, "type": "bar"},
+     {"config": {"csv": "data/ChirHomeo.csv", "measure": "Percentage"}, "type": "bar"}]
  },
  {
    "background": "A psychic is a person who claims to use extrasensory perception (ESP) to identify information hidden from the normal senses. The word 'psychic' is also used as an adjective to describe such abilities. Psychics may be theatrical performers, such as stage magicians, who use techniques such as prestidigitation, cold reading, and hot reading to produce the appearance of such abilities. Psychics appear regularly in fantasy fiction, such as in the novel The Dead Zone by Stephen King. Critics attribute psychic powers to intentional trickery or to self-delusion. In 1988 the U.S. National Academy of Sciences gave a report on the subject and concluded there is 'no scientific justification from research conducted over a period of 130 years for the existence of parapsychological phenomena.' A study attempted to repeat recently reported parapsychological experiments that appeared to support the existence of precognition. Attempts to repeat the results, which involved performance on a memory test to ascertain if post-test information would affect it, 'failed to produce significant effects', and thus 'do not support the existence of psychic ability,' and is thus categorized as a pseudoscience. It is also frequently used in science-fiction (sometimes called psionic or psyonic).",
    "sector": "Psychics",
-   "practitioners": 6,
-   "spending": 2000
+   "users": 14669000,
+   "practitioners": 45700,
+   "spending": 2000000000,
+   "graphs": [{"config": {"csv": "data/Psychics1.csv", "measure": "Percentage"}, "type": "line"}]
  },
  {
    "background": "Aromatherapy uses plant materials and aromatic plant oils, including essential oils, and other aroma compounds for improving psychological or physical well-being. It can be offered as a complementary therapy or, more controversially, as a form of alternative medicine. Complementary therapy can be offered alongside standard treatment, with alternative medicine offered instead of conventional, evidence-based treatments. Aromatherapists, who specialize in the practice of aromatherapy, utilize blends of therapeutic essential oils that can be issued through topical application, massage, inhalation or water immersion to stimulate a desired response. There is no good medical evidence that aromatherapy can either prevent or cure any disease, but it might help improve general well-being.",
    "sector": "Aromatherapy",
-   "practitioners": 6,
-   "spending": 1000
+   "users": 15411000,
+   "practitioners": 19671,
+   "spending": 1000000000,
+   "graphs": [{"config": {"csv": "data/Aroma1.csv", "measure": "Percentage"}, "type": "bar"}]
  },
  {
    "background": "Reiki is a form of alternative medicine developed in 1922 by Japanese Buddhist Mikao Usui. Since originating in Japan, Reiki has been adapted into varying cultural traditions across the world. Reiki practitioners use a technique called palm healing or hands-on healing through which a 'universal energy' is allegedly transferred through the palms of the practitioner to the patient in order to encourage emotional or physical healing. Reiki is pseudoscience. It is based on qi ('chi'), which practitioners say is a universal life force, although there is no empirical evidence that such a life force exists. Clinical research has not shown Reiki to be effective as a medical treatment for any medical condition. The American Cancer Society,Cancer Research UK, and the National Center for Complementary and Integrative Health state that Reiki should not be a replacement for conventional treatment.",
    "sector": "Reiki",
-   "practitioners": 6,
-   "spending": 421
+   "users": 1077000,
+   "practitioners": 14198,
+   "spending": 421000000,
+   "graphs": [{"config": {"csv": "data/Reiki1.csv", "measure": "Percentage"}, "type": "line"}]
  },
  {
    "background": "The Myers–Briggs Type Indicator (MBTI) is an introspective self-report questionnaire designed to indicate psychological preferences in how people perceive the world and make decisions. The MBTI was constructed by Katharine Cook Briggs and her daughter Isabel Briggs Myers. It is based on the typological theory proposed by Carl Jung who had speculated that there are four principal psychological functions by which humans experience the world – sensation, intuition, feeling, and thinking – and that one of these four functions is dominant for a person most of the time.[5] The MBTI was constructed for normal populations and emphasizes the value of naturally occurring differences. 'The underlying assumption of the MBTI is that we all have specific preferences in the way we construe our experiences, and these preferences underlie our interests, needs, values, and motivation.' Although popular in the business sector, the MBTI exhibits significant psychometric deficiencies, notably including poor validity (i.e. not measuring what it purports to measure) and poor reliability (giving different results for the same person on different occasions).",
    "sector": "Myers-Briggs",
-   "spending": 400,
-   "practitioners": 6,
-   "graphs": [{"config": {"csv": "data/MyersBriggs.csv", "measure": "Percentage", "width": 450, "height": 300}}]
+   "users": 12000000,
+   "practitioners": 8000,
+   "spending": 400000000,
+   "graphs": [{"config": {"csv": "data/MyersBriggs.csv", "measure": "Percentage"}, "type": "bar"}]
  }
 ]
